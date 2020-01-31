@@ -1,10 +1,11 @@
 .PHONY: \
+native \
 run \
 test \
 clean \
 run-jar \
 
-default: target/f
+default: native
 
 DEPS := \
 org.scala-lang:scala-library:2.13.1 \
@@ -14,7 +15,8 @@ MAIN_CLASS := F
 NATIVE_OPTIONS := \
 --no-fallback \
 --no-server \
---initialize-at-build-time \ 
+--initialize-at-build-time \
+ 
 
 CP := $(shell coursier fetch $(DEPS) | tr '\n' ':')
 
@@ -39,7 +41,8 @@ target/f.test.jar: target/test-classes/FTest.class Makefile
 run-jar: target/f.jar
 	java -cp target/f.jar:$(CP) $(MAIN_CLASS)
 target/f: target/f.jar
-	native-image $(NATIVE_OPTIONS) --class-path $(CP):target/f.jar -H:Name=target/f $(MAIN_CLASS)
+	native-image $(MAIN_CLASS) $(NATIVE_OPTIONS) --class-path $(CP):target/f.jar -H:Name=target/f
 clean:
 	rm -rf target/
+native: target/f
 
