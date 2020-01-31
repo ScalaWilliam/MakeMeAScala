@@ -35,3 +35,4 @@ target/f: target/f.jar
 	native-image $(NATIVE_OPTIONS) --class-path $(CP):target/f.jar -H:Name=target/f $(MAIN_CLASS)
 clean:
 	rm -rf target/
+
