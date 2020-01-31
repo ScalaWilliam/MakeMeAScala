@@ -1,3 +1,19 @@
+
+DEPS := \
+org.scala-lang:scala-library:2.13.1 \
+org.jsoup:jsoup:1.12.1 \
+
+APP_NAME := F
+
+NATIVE_OPTIONS := \
+--no-fallback \
+--no-server \
+--initialize-at-build-time \
+
+TEST_FILTER := Test.scala
+MAIN_CLASS := $(APP_NAME)
+TEST_CLASS := $(APP_NAME)Test
+
 .PHONY: \
 native \
 run \
@@ -8,25 +24,15 @@ run-jar \
 
 default: native
 
-DEPS := \
-org.scala-lang:scala-library:2.13.1 \
-org.jsoup:jsoup:1.12.1 \
+MAIN_SOURCES := $(shell ls *.scala | grep -v -F $(TEST_FILTER))
+MAIN_TEST_SOURCES := $(shell ls *.scala | grep -F $(TEST_FILTER))
 
-MAIN_CLASS := F
-TEST_CLASS := FTest
-
-MAIN_SOURCES := $(shell ls *.scala | grep -v -F .test.scala)
-MAIN_TEST_SOURCES := $(shell ls *.scala | grep -F .test.scala)
-NATIVE_OPTIONS := \
---no-fallback \
---no-server \
---initialize-at-build-time \
-
-TARGET_CLASSES_DIR := target/classes
-TARGET_TEST_CLASSES := target/test-classes
-TARGET_NATIVE := target/f
-TARGET_JAR := target/f.jar
-TARGET_TEST_JAR := target/f.test.jar
+TARGET := target
+TARGET_CLASSES_DIR := $(TARGET)/classes
+TARGET_TEST_CLASSES := $(TARGET)/test-classes
+TARGET_NATIVE := $(TARGET)/$(APP_NAME)
+TARGET_JAR := $(TARGET)/$(APP_NAME).jar
+TARGET_TEST_JAR := $(TARGET)/$(APP_NAME).test.jar
 
 CP := $(shell coursier fetch $(DEPS) | tr '\n' ':')
 
@@ -60,7 +66,7 @@ $(TARGET_NATIVE): $(TARGET_JAR)
 	native-image $(MAIN_CLASS) $(NATIVE_OPTIONS) --class-path $(CP):$(TARGET_JAR) -H:Name=$(TARGET_NATIVE)
 
 clean:
-	rm -rf target/
+	rm -rf $(TARGET)/
 
 native: $(TARGET_NATIVE)
 
