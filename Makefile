@@ -8,7 +8,7 @@ default: target/f
 
 DEPS := \
 org.scala-lang:scala-library:2.13.1 \
-org.jsoup:jsoup:1.12.1
+org.jsoup:jsoup:1.12.1 \
 
 MAIN_CLASS := F
 NATIVE_OPTIONS := \
