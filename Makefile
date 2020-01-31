@@ -34,6 +34,9 @@ run: $(TARGET_JAR)
 test: $(TARGET_JAR) $(TARGET_TEST_JAR)
 	java -cp $(TARGET_JAR):$(TARGET_TEST_JAR):$(CP) $(TEST_CLASS)
 
+test-watch: $(TARGET_JAR) $(TARGET_TEST_JAR)
+	ls $(MAIN_SOURCE_FILE) $(MAIN_TEST_FILE) Makefile | entr make test
+
 $(TARGET_CLASSES_DIR)/$(MAIN_CLASS).class: $(MAIN_SOURCE_FILE) Makefile
 	rm -rf $(TARGET_CLASSES_DIR)
 	mkdir -p $(TARGET_CLASSES_DIR)

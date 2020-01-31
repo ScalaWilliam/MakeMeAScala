@@ -1,13 +1,16 @@
-import org.jsoup._
+import java.net.URL
 
-final case class Lol(x: String)
+import org.jsoup._
+import org.jsoup.nodes.Document
+
+object Lol {
+  def modify(doc: Document): Unit = {
+    doc.selectFirst("*").appendText("Works")
+  }
+}
 
 object F extends App {
-  println("YAY")
-
-  object X {
-    val q = "y"
-  }
-
-  println(Lol("X"))
+  val doc = Jsoup.parse(new URL("http://www.example.net/"), 1000)
+  Lol.modify(doc)
+  println(doc)
 }
