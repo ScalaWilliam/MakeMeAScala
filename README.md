@@ -19,11 +19,11 @@ I need Scala, I need TDD, I need command-line utilities (like [sed](https://www.
    [awk](https://www.gnu.org/software/gawk/manual/gawk.html),
    [tr](https://www.gnu.org/software/coreutils/manual/html_node/tr-invocation.html#tr-invocation),
    [jq](https://stedolan.github.io/jq/))
-and I need workflow management. In particular, for:
+and I need workflow dependency management. In particular, for:
 - Data science - see lovely article on Medium: [Makefiles are easy. Makefiles will change your life. Every data scientist should be using Makefiles. You need Makefiles.
 ](https://medium.com/@davidstevens_16424/make-my-day-ta-science-easier-e16bc50e719c)
 - Finance accounting - see [hledger](https://hledger.org/).
-- Static website generation.
+- Static website generation with multiple stages of content generation.
 
 ## How did you build it?
 
@@ -103,3 +103,5 @@ Format Scala sources using (scalafmt)[https://scalameta.org/scalafmt/].
 ### `make jar`
 Compile a JAR file from your sources.
 
+### However you want
+Because it's a Makefile, you can create your own tasks with ease to suit your workflows.
