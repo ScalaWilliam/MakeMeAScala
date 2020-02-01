@@ -1,4 +1,4 @@
-# Make(file) me a Scala
+# Make me a Scala
 
 > Build native Scala apps, fast.
 
