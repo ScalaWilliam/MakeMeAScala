@@ -16,8 +16,7 @@ object TestAdditions {
     try {
       c
       println(s"${ANSI_GREEN}Tests passed.${ANSI_RESET}")
-    }
-    catch {
+    } catch {
       case e: Throwable =>
         println(s"${ANSI_RED}Tests failed:")
         e.printStackTrace()
@@ -30,9 +29,12 @@ object TestAdditions {
 object FTest extends App {
   execute {
     val doc = Jsoup.parse("<body>Test</body>")
-    Lol.modify(doc)
+    SecondMainScala.modify(doc)
     val gotText = doc.text()
     val expectedText = "Test Works"
-    assert(gotText == expectedText, s"Expected '${expectedText}', got '${gotText}'")
+    assert(
+      gotText == expectedText,
+      s"Expected '${expectedText}', got '${gotText}'"
+    )
   }
 }

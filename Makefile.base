@@ -4,6 +4,7 @@ TEST_CLASS ?= $(APP_NAME)Test
 
 DEFAULT_TASKS ?= \
  native \
+ jar \
  test \
  clean \
  tdd \
@@ -38,6 +39,13 @@ test: $(TARGET_JAR) $(TARGET_TEST_JAR)
 
 tdd: $(TARGET_JAR) $(TARGET_TEST_JAR)
 	ls $(MAIN_SOURCES) $(MAIN_TEST_SOURCES) $(OTHER_DEPENDENCIES) | entr make test
+
+jar: $(TARGET_JAR)
+
+fmt:
+	coursier launch org.scalameta:scalafmt-cli_2.12:2.3.3-RC2 --main org.scalafmt.cli.Cli -- $(MAIN_SOURCES) $(MAIN_TEST_SOURCES)
+
+test-jar: $(TARGET_TEST_JAR)
 
 $(TARGET_JAR): $(MAIN_SOURCES) $(OTHER_DEPENDENCIES)
 	rm -rf $(TARGET_CLASSES_DIR)

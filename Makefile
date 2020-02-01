@@ -1,4 +1,4 @@
-APP_NAME = F
+APP_NAME = MakeMeAScala
 
 SCALA_VERSION = 2.13.1
 
@@ -12,3 +12,5 @@ NATIVE_OPTIONS = \
 --initialize-at-build-time \
 
 include Makefile.base
+
+NATIVE_OPTIONS += -H:EnableURLProtocols=http
