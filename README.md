@@ -85,7 +85,7 @@ Slow to compile; fast to understand, get started and build out workflows.
 #### For larger projects
 For enterprise apps, or publishing libraries, use SBT or Maven.
 
-## How do you use it?
+## How do I use it?
 Here are some essential commands, in order of frequency of usage.
 
 ### `make tdd`
