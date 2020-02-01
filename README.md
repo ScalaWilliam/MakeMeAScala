@@ -4,12 +4,15 @@
 
 ## What are the prerequisites?
 - `make` (available on every Linux/macOS)
+- JDK<br>
+    Ensure the `jar` utility is available in the `PATH` - some OSes don't expose it - on CentOS I did `ln -s /usr/java/jdk-11.0.2/bin/jar ~/.local/bin/jar`, you can also do `export PATH=$PATH:$JAVA_HOME/bin` if `JAVA_HOME` is set).
 - Coursier: https://get-coursier.io/docs/cli-overview
   (Quick install: `curl -Lo coursier https://git.io/coursier-cli && chmod +x coursier && mv coursier ~/.local/bin/coursier`)
 
 ### Optional
 - `entr` for TDD: http://eradman.com/entrproject/
 - GraalVM `native-image` for native images: https://www.graalvm.org/docs/reference-manual/native-image/
+  You may also need to add it to the `PATH`.
 
 ## What is this?
 It is a template that lets you build Scala **apps** with [test-driven-development](http://www.agiledata.org/essays/tdd.html) (TDD)
