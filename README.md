@@ -5,6 +5,7 @@
 ## What are the prerequisites?
 - `make` (available on every Linux/macOS)
 - Coursier: https://get-coursier.io/docs/cli-overview
+  (Quick install: `curl -Lo coursier https://git.io/coursier-cli && chmod +x coursier && mv coursier ~/.local/bin/coursier`)
 
 ### Optional
 - `entr` for TDD: http://eradman.com/entrproject/
