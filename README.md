@@ -5,12 +5,14 @@
 ## What are the prerequisites?
 - `make` (available on every Linux/macOS)
 - Coursier: https://get-coursier.io/docs/cli-overview
-- entr for TDD: http://eradman.com/entrproject/
-- GraalVM `native-image`: https://www.graalvm.org/docs/reference-manual/native-image/
+
+### Optional
+- `entr` for TDD: http://eradman.com/entrproject/
+- GraalVM `native-image` for native images: https://www.graalvm.org/docs/reference-manual/native-image/
 
 ## What is this?
-It is a template that lets you build Scala ___apps___ with [test-driven-development](http://www.agiledata.org/essays/tdd.html) (TDD)
- and create independent ___native executables___ swiftly.
+It is a template that lets you build Scala **apps** with [test-driven-development](http://www.agiledata.org/essays/tdd.html) (TDD)
+ and create independent **native executables** swiftly.
  
 ## Why did you build it?
 
@@ -80,7 +82,7 @@ Slow to compile; fast to understand, get started and build out workflows.
 ### Why would you use it?
 
 - Independent command-line applications developed with fast test cycles (Love TDD and composing apps!).
-- Introduce your friends to Scala, ***FAST***. Scala's Achilles heel is the amount of time it takes to set up an enterprise build tool to get coding.
+- Introduce your friends to Scala, **FAST**. Scala's Achilles heel is the amount of time it takes to set up an enterprise build tool to get coding.
 
 #### For larger projects
 For enterprise apps, or publishing libraries, use SBT or Maven.
