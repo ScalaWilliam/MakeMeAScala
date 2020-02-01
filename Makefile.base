@@ -1,8 +1,8 @@
-TEST_FILTER = Test.scala
-MAIN_CLASS = $(APP_NAME)
-TEST_CLASS = $(APP_NAME)Test
+TEST_FILTER ?= Test.scala
+MAIN_CLASS ?= $(APP_NAME)
+TEST_CLASS ?= $(APP_NAME)Test
 
-DEFAULT_TASKS = \
+DEFAULT_TASKS ?= \
  native \
  test \
  clean \
@@ -12,26 +12,26 @@ DEFAULT_TASKS = \
 
 default: native
 
-MAIN_SOURCES = $(shell ls *.scala | grep -v -F $(TEST_FILTER))
-MAIN_TEST_SOURCES = $(shell ls *.scala | grep -F $(TEST_FILTER))
+MAIN_SOURCES ?= $(shell ls *.scala | grep -v -F $(TEST_FILTER))
+MAIN_TEST_SOURCES ?= $(shell ls *.scala | grep -F $(TEST_FILTER))
 
-TARGET = target
-TARGET_CLASSES_DIR = $(TARGET)/classes
-TARGET_TEST_CLASSES = $(TARGET)/test-classes
-TARGET_NATIVE = $(TARGET)/$(APP_NAME)
-TARGET_JAR = $(TARGET)/$(APP_NAME).jar
-TARGET_TEST_JAR = $(TARGET)/$(APP_NAME).test.jar
-OTHER_DEPENDENCIES = Makefile Makefile.base
+TARGET ?= target
+TARGET_CLASSES_DIR ?= $(TARGET)/classes
+TARGET_TEST_CLASSES ?= $(TARGET)/test-classes
+TARGET_NATIVE ?= $(TARGET)/$(APP_NAME)
+TARGET_JAR ?= $(TARGET)/$(APP_NAME).jar
+TARGET_TEST_JAR ?= $(TARGET)/$(APP_NAME).test.jar
+OTHER_DEPENDENCIES ?= Makefile Makefile.base
 
-CP = $(shell coursier fetch $(DEPS) org.scala-lang:scala-library:$(SCALA_VERSION) | tr '\n' ':')
-SCALAC_DEPS = \
+CP ?= $(shell coursier fetch $(DEPS) org.scala-lang:scala-library:$(SCALA_VERSION) | tr '\n' ':')
+SCALAC_DEPS ?= \
   org.scala-lang:scala-library:$(SCALA_VERSION) \
   org.scala-lang:scala-compiler:$(SCALA_VERSION) \
   org.scala-lang:scala-reflect:$(SCALA_VERSION) \
 
-CP_SCALAC = $(shell coursier fetch $(SCALAC_DEPS) | tr '\n' ':')
+CP_SCALAC ?= $(shell coursier fetch $(SCALAC_DEPS) | tr '\n' ':')
 
-SCALA_COMPILE = java -cp $(CP_SCALAC) scala.tools.nsc.Main
+SCALA_COMPILE ?= java -cp $(CP_SCALAC) scala.tools.nsc.Main
 
 test: $(TARGET_JAR) $(TARGET_TEST_JAR)
 	java -cp $(TARGET_JAR):$(TARGET_TEST_JAR):$(CP) $(TEST_CLASS)

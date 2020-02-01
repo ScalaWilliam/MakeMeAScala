@@ -1,5 +1,3 @@
-include Makefile.base
-
 APP_NAME = F
 
 SCALA_VERSION = 2.13.1
@@ -12,3 +10,5 @@ NATIVE_OPTIONS = \
 --no-fallback \
 --no-server \
 --initialize-at-build-time \
+
+include Makefile.base
