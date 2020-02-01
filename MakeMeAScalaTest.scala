@@ -26,7 +26,7 @@ object TestAdditions {
   }
 }
 
-object FTest extends App {
+object MakeMeAScalaTest extends App {
   execute {
     val doc = Jsoup.parse("<body>Test</body>")
     SecondMainScala.modify(doc)
